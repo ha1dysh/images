@@ -2,23 +2,8 @@ import styles from './ImageGallery.module.css';
 import ImageGalleryItem from './imageGalleryItem/ImageGalleryItem';
 
 export default function ImageGallery({ data, setModalImage }) {
-  // const findBigImage = ({ target }) => {
-  //   data.map((element) => {
-  //     const findImageFromDataArray =
-  //       target.currentSrc === element.sImage;
-
-  //     if (findImageFromDataArray) {
-  //       return toggleModal(element.bImage);
-  //     }
-  //     return element;
-  //   });
-  // };
-
   return (
-    <ul
-      className={styles.ImageGallery}
-      // onClick={(e) => findBigImage(e)}
-    >
+    <ul className={styles.ImageGallery}>
       <ImageGalleryItem data={data} setModalImage={setModalImage} />
     </ul>
   );

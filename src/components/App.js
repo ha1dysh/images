@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React from 'react';
+import { useEffect, useState } from 'react';
 import { fetchPics } from '../services/fetchAPI';
 
 import styles from './App.module.css';
@@ -15,32 +16,35 @@ export default function App() {
   const [modalImage, setModalImag] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadImages = async (searchValue) => {
-    setIsLoading(true);
+  const loadImages = (searchValue) => {
+    setSearchValue(searchValue);
+    setData([]);
+    setPage(1);
+  };
 
-    const data = await fetchPics(searchValue);
-    console.log(data);
+  const loadMore = () => {
+    setPage((state) => state + 1);
+  };
 
-    if (data.length === 0) {
-      alert('Incorrect request');
+  useEffect(() => {
+    if (searchValue === '') {
       return;
     }
 
-    setSearchValue(searchValue);
-    setData(data);
-    setPage(1);
-    setIsLoading(false);
-  };
-
-  const loadMore = async () => {
     setIsLoading(true);
 
-    const data = await fetchPics(searchValue, page + 1);
+    try {
+      const fetchData = async () => {
+        const data = await fetchPics(searchValue, page);
+        setData((state) => [...state, ...data]);
+      };
+      fetchData();
+    } catch (error) {
+      alert('try again');
+    }
 
-    setData((state) => [...state, ...data]);
-    setPage((state) => state + 1);
     setIsLoading(false);
-  };
+  }, [searchValue, page]);
 
   const toggleModal = (modalImage = '') => {
     setModalImag(modalImage);

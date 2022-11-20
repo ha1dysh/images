@@ -5,7 +5,7 @@ export default function Button({ onLoadMore }) {
   return (
     <div style={{ textAlign: 'center', margin: '16px' }}>
       <button
-        className={styles.Button}
+        className={styles.buttonLoadMore}
         type="button"
         onClick={onLoadMore}
       >

@@ -47,7 +47,7 @@
   opacity: 1;
 }
 
-.SearchFormInput {
+.searchFormInput {
   display: inline-block;
   width: 100%;
   font: inherit;
@@ -58,7 +58,7 @@
   padding-right: 4px;
 }
 
-.SearchFormInput::placeholder {
+.searchFormInput::placeholder {
   font: inherit;
   font-size: 18px;
 }

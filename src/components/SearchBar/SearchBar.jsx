@@ -25,15 +25,13 @@ export default function SearchBar({ loadImages }) {
           className={styles.SearchFormButton}
           type="submit"
         ></button>
-        <label>
-          <input
-            className={styles.SearchFormInput}
-            type="text"
-            placeholder="Search images and photos"
-            autoComplete="off"
-            {...register('searchReq')}
-          />
-        </label>
+        <input
+          className={styles.searchFormInput}
+          type="text"
+          placeholder="Search images and photos"
+          autoComplete="off"
+          {...register('searchReq')}
+        />
       </form>
     </header>
   );

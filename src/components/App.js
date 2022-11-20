@@ -13,7 +13,7 @@ export default function App() {
   const [searchValue, setSearchValue] = useState('');
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
-  const [modalImage, setModalImag] = useState('');
+  const [modalImage, setModalImage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const loadImages = (searchValue) => {
@@ -46,10 +46,6 @@ export default function App() {
     setIsLoading(false);
   }, [searchValue, page]);
 
-  const toggleModal = (modalImage = '') => {
-    setModalImag(modalImage);
-  };
-
   const isModalOpen = modalImage.length > 0;
 
   return (
@@ -57,7 +53,7 @@ export default function App() {
       <SearchBar loadImages={loadImages} />
 
       {data.length > 0 && (
-        <ImageGallery data={data} toggleModal={toggleModal} />
+        <ImageGallery data={data} setModalImage={setModalImage} />
       )}
 
       {isLoading && <Loader />}
@@ -65,7 +61,10 @@ export default function App() {
       {data.length > 0 && <Button onLoadMore={loadMore} />}
 
       {isModalOpen && (
-        <Modal modalImage={modalImage} toggleModal={toggleModal} />
+        <Modal
+          modalImage={modalImage}
+          setModalImage={setModalImage}
+        />
       )}
     </div>
   );

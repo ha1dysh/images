@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import styles from './Modal.module.css';
 
-export default function Modal({ modalImage, toggleModal }) {
+export default function Modal({ modalImage, setModalImage }) {
   const escapeClose = ({ code }) => {
     if (code === 'Escape') {
-      toggleModal();
+      setModalImage('');
     }
   };
 
   const backgroundClose = (e) => {
     if (modalImage !== e.target.currentSrc) {
-      toggleModal();
+      setModalImage('');
     }
   };
 
